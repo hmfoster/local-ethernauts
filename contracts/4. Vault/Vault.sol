@@ -2,7 +2,9 @@
 pragma solidity ^0.8.9;
 
 contract Vault {
+  //slot 0
   bool public locked;
+  //slot 1
   bytes32 private password;
 
   constructor(bytes32 _password) {

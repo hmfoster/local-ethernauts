@@ -8,6 +8,7 @@ contract Reentrance {
     constructor() payable {}
 
     function donate(address _to) public payable {
+        console.log("donating");
         balances[_to] = balances[_to] + msg.value;
     }
 
